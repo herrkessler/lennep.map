@@ -8,23 +8,27 @@ block body
       #map-canvas
 
     section#list
-      nav#list-search
-        ul
-          li Suche
-          li Suche
-          li Suche
+      //- nav#list-search
+      //-   ul
+      //-     li Suche
+      //-     li Suche
+      //-     li Suche
       ul.card-list
         each venue in venues
           li.card(data-venue=venue.id, class=favourite ? 'favourite' : '')
             .card-avatar
-              a(href="")
-                img(src="/images/daunia.jpg")
+              a(href="#")
+                img(src=venue.gallery[0])
               .card-favourite
                 i.fa.fa-heart
             .card-content
-              h4= venue.title
+              h4
+                a(href="#")= venue.title
               .card-facts
                 .card-rating
                   i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
                 .card-distance
                   i.fa.fa-map-marker
+                  span 1.24km
