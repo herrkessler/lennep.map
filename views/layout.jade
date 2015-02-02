@@ -5,7 +5,7 @@ html
     meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
     link(type='text/css', href='/styles/all.css', rel='stylesheet')
 
-    body(data-user-id=req.session.authenticated ? '#{req.session.User.id}' : '')
+    body(data-user=req.session.authenticated ? '#{req.session.User.id}' : 'sessionlessUser', data-fake-user="54cf437cc48870f507214efa")
       include _nav
 
       if (flash && flash.err)
@@ -14,8 +14,17 @@ html
             li= message.message
 
       .container
-          block body
+        nav#menu
+          ul
+            li Menu
+            li Menu
+            li Menu
+            li Menu
 
-      script(src="/js/dependencies/sails.io.js", asnyc)
-      script(src="/js/dependencies/jquery-2.1.1.js", asnyc)
-      script(src='/js/map.js', async)
+        block body
+
+      script(src="/js/dependencies/sails.io.js")
+      script(src="/js/dependencies/jquery-2.1.1.js")
+      script(src="/js/lib/jquery.cookie.js")
+      script(src='/js/map.js')
+      script(src='/js/favourites.js')
