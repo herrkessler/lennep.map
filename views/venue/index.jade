@@ -2,5 +2,11 @@ extends ../layout
 
 block body
 
-  each venue in venues
-    p= venue.title  
+  aside#menu
+
+  #map
+    #map-canvas
+
+  section#venue-list
+    each venue in venues
+      p= venue.title  

@@ -12,9 +12,6 @@
 // -----------------------------------------------------------------------
 
 @import "lib/reset";
-@import "lib/font-awesome/font-awesome";
-@import "lib/jeet/index";
-@import "lib/mapbox";
 
 // -----------------------------------------------------------------------
 // Variables, Colors & Custom Mixins
@@ -29,17 +26,5 @@
 // Specific Styles
 // -----------------------------------------------------------------------
 
-@import "specific/grids";
-@import "specific/nav";
 @import "specific/styles";
-@import "specific/site";
-@import "specific/user";
-@import "specific/map";
-@import "specific/favourites-button";
-@import "specific/edit";
-@import "specific/admin";
-@import "specific/profile";
-@import "specific/form";
-@import "specific/button";
-@import "specific/blog";
-@import "specific/login";
+@import "specific/venue";
