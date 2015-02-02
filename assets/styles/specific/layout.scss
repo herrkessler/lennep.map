@@ -1,0 +1,60 @@
+// -----------------------------------------------------------------------
+// Flexbox Grid
+// -----------------------------------------------------------------------
+
+.container {
+  @include outer-container;
+  height: 100vh;
+}
+
+.row {
+  @include row;
+}
+
+#menu {
+  @include span-columns(12);
+  @include omega();
+  background: lighten(grey, 10%);
+  padding: $default-padding;
+  ul {
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+#map {
+  @include span-columns(6);
+  height: 100%;
+}
+
+#map-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#list {
+  @include span-columns(6);
+  @include omega();
+  height: 100%;
+  padding-right: $neat-margin;
+}
+
+#content {
+  @include span-columns(12);
+  @include omega();
+  @include calc(height, "100% - 64px");
+  overflow: hidden;
+}
+
+.card-list {
+  @include size(100% 96%);
+  overflow-y: scroll;
+}
+
+#list-search {
+  li {
+    display: inline-block;
+    margin-right: $default-margin;
+  }
+}
