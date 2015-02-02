@@ -1,0 +1,62 @@
+.card {
+  @include span-columns(4);
+  @include omega(3n);
+  background: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.6);
+  margin-top: $default-margin;
+  &:last-child {
+    margin-bottom: $default-margin;
+  }
+  @include media($tablet) {
+    @include span-columns(6);
+    @include omega-reset(3n);
+    @include omega(2n);
+  }
+  &.favourite {
+    .card-favourite {
+      color: $dark-red;
+    }
+  }
+}
+
+.card-avatar {
+  position: relative;
+  background: silver;
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+  img {
+    @include total-center;
+  }
+}
+
+.card-favourite {
+  position: absolute;
+  top: $default-margin/2;
+  right: $default-margin/2;
+  cursor: pointer;
+  background: rgba(white, 0.9);
+  padding: $default-padding/4;
+  line-height: 1;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: silver;
+  @include transition(transform 0.2s ease-out);
+  &:hover {
+    @include transform(scale(1.1));
+  }
+}
+
+.card-content {
+  color: black;
+  padding: $default-padding/2;
+}
+
+.card-rating {
+  float: left;
+}
+.card-distance {
+  float: right;
+}

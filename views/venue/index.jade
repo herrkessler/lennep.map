@@ -2,11 +2,29 @@ extends ../layout
 
 block body
 
-  aside#menu
+  main#content
 
-  #map
-    #map-canvas
+    #map
+      #map-canvas
 
-  section#venue-list
-    each venue in venues
-      p= venue.title  
+    section#list
+      nav#list-search
+        ul
+          li Suche
+          li Suche
+          li Suche
+      ul.card-list
+        each venue in venues
+          li.card(data-venue=venue.id, class=favourite ? 'favourite' : '')
+            .card-avatar
+              a(href="")
+                img(src="/images/daunia.jpg")
+              .card-favourite
+                i.fa.fa-heart
+            .card-content
+              h4= venue.title
+              .card-facts
+                .card-rating
+                  i.fa.fa-star
+                .card-distance
+                  i.fa.fa-map-marker
