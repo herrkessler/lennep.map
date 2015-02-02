@@ -14,11 +14,12 @@
 #menu {
   @include span-columns(12);
   @include omega();
-  background: lighten(grey, 10%);
-  padding: $default-padding;
+  background: #222;
+  padding: $default-padding/2;
   ul {
     li {
       display: inline-block;
+      margin-right: $default-margin;
     }
   }
 }
@@ -43,7 +44,7 @@
 #content {
   @include span-columns(12);
   @include omega();
-  @include calc(height, "100% - 64px");
+  @include calc(height, "100% - 44px");
   overflow: hidden;
 }
 
