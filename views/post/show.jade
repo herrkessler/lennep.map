@@ -1,0 +1,11 @@
+extends ../layout
+
+block body
+
+  #post
+    h1= post.title
+    p von 
+      = post.author
+    hr
+    p= post.updatedAt.getDay() +'.'+ post.updatedAt.getDate() +'.'+ post.updatedAt.getFullYear()
+    p= post.text

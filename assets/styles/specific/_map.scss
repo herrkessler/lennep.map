@@ -1,0 +1,40 @@
+#map__wrapper {
+  @include col(1);
+  position: relative;
+  background: white;
+  &:before {
+    display: block;
+    content: "";
+    padding-top: 100%;
+  }
+}
+
+#map__overview__wrapper {
+  @include col(1);
+  height: 50vh;
+  position: relative;
+  background: white;
+  @include media($mobile) {
+    height: 30vh;
+  }
+}
+
+#map__content, #map__overview__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include size(100%);
+}
+
+#map, #map__overview {
+  @include size(100%);
+  &.no-adress {
+    background: silver;
+    height: 100px;
+    position: relative;
+    &:before {
+      content: "Keine Adresse bisher";
+      color: black;
+    }
+  }
+}

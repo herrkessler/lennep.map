@@ -1,0 +1,12 @@
+extends ../layout
+
+block body
+
+  form#form(action="/session/create", method="POST")
+    fieldset
+      input(type="email", placeholder="Email address", name="email")
+      br
+      input(type="password", placeholder="Password", name="password")
+    fieldset
+      input(type="submit", value="Sign-in")
+      input(type="hidden", name="_csrf", value="#{_csrf}")

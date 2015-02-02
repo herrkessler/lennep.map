@@ -1,0 +1,33 @@
+extends ../layout
+
+
+block body
+
+  h1 Neuer Post
+  hr
+  br
+
+  if (flash && flash.err)
+    ul
+      each message in flash.err
+        li= message.message
+
+  form.form(action="/blog/create/", method="POST")
+    fieldset
+      label.required(for="title") Titel
+      input(type="text", name="title", placeholder="Titel")
+    fieldset
+      label(for="state") State
+      select(name="state")
+        option(selected=true) Draft
+        option Published
+    fieldset
+      label(for="brief") Brief
+      textarea(name="brief", rows="10")
+      br
+      label(for="text") Text
+      textarea(name="text", rows="10")
+    fieldset
+      input(type="submit", value="Speichern")
+      input(type="hidden" name="_csrf", value="#{_csrf}")
+      input(type="hidden", name="author", value=req.session.User.firstName +' '+ req.session.User.lastName)

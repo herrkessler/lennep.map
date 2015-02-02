@@ -1,0 +1,52 @@
+.userlist {
+  @extend .sitelist;
+}
+
+.userlist__item {
+  @extend .sitelist__item; 
+}
+
+.userlist__item__wrapper {
+  @extend .sitelist__item__wrapper;
+}
+
+.userlist__item__avatar {
+  height: 200px;
+  border-bottom: 10px solid #354B60;
+  @include transition(border-bottom 0.2s ease-out);
+  &:hover {
+    border-bottom-color: lighten(#354B60, 10%);
+  }
+  @include media($mobile) {
+    height: 150px;
+  }
+}
+
+.userlist__item__showlink {
+  @extend .sitelist__item__showlink;
+}
+
+.user__status__indicator {
+  @extend .small__button;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  &.user__status__indicator--online {
+    background: $green;
+    &:after {
+      content: "online";
+    }
+  }
+  &.user__status__indicator--offline {
+    background: $darkest-red;
+    &:after {
+      content: "offline";
+    }
+  }
+  &.user__status__indicator--requested {
+    background: $light-grey;
+    &:after {
+      content: "angefragt";
+    }
+  }
+}

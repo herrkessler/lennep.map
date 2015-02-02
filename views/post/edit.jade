@@ -1,0 +1,52 @@
+extends ../layout
+
+block body
+
+  h1 Edit - 
+    = post.title
+  hr
+  br
+
+  if (flash && flash.err)
+    ul
+      each message in flash.err
+        li= message.message
+
+  form.form(action="/blog/update/#{post.id}", method="POST")
+    fieldset
+      label.required(for="title") Titel
+      input(type="text", name="title", placeholder="Titel", value=post.title)
+    fieldset
+      label(for="state") State
+      select(name="state")
+        if post.state == 'draft'
+          option(selected, value="draft") Draft
+          option(value="published") Published
+        if post.state == 'published'
+          option(value="draft") Draft
+          option(selected, value="published") Published
+    fieldset
+      label(for="brief") Brief
+      textarea(name="brief", rows="10")
+        = post.brief
+      br
+      label(for="text") Text
+      textarea(name="text", rows="10")
+        = post.text
+    fieldset
+      input(type="submit", value="Speichern")
+      input(type="hidden" name="_csrf", value="#{_csrf}")
+      input(type="hidden", name="author", value=req.session.User.firstName +' '+ req.session.User.lastName)
+
+  form.form(action='/file/setPostImage', enctype='multipart/form-data', method='post')
+    fieldset
+      h4 Post Image
+      hr
+      img.edit__profile--avatar(src="#{post.mainImage}")
+      input(type="text", name="mainImage", value="#{post.mainImage}")
+      input(type='hidden', name="_csrf", value="#{_csrf}")
+      input(type='hidden', name="postID", value="#{post.id}")
+      br
+      input(type='file', name='postImage', multiple='multiple')
+      br
+      input(type='submit', value='Post Image hochladen', class="btn btn-lg btn-primary btn-block")

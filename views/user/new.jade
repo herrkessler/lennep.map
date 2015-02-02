@@ -1,0 +1,44 @@
+extends ../layout
+
+block body
+
+  //- h1 User Anmeldung
+  //- hr
+  //- br
+
+  //- if (flash && flash.err)
+  //-   ul
+  //-     each message in flash.err
+  //-       li= message.message
+
+  //- form#form(action="/user/create/", method="POST")
+  //-   fieldset
+  //-     label.required(for="firstName") Vorname
+  //-     input(type="text", name="firstName", placeholder="Vorname")
+  //-     br
+  //-     label.required(for="lastName") Nachname
+  //-     input(type="text", name="lastName", placeholder="Nachname")
+  //-   fieldset
+  //-     label.required(for="email") Email
+  //-     input(type="email", name="email", placeholder="Email")
+  //-   fieldset
+  //-     label.required(for="adress_street") Straße
+  //-     input(type="text", name="adress_street", value="", placeholder="Beispielstraße")
+  //-     br
+  //-     label.required(for="adress_number") Hausnummer
+  //-     input(type="text", name="adress_number", value="", placeholder="345")
+  //-     br
+  //-     label.required(for="adress_zip") PLZ
+  //-     input(type="text", name="adress_zip", value="", placeholder="42897")
+  //-     br
+  //-     label.required(for="adress_city") Stadt
+  //-     input(type="text", name="adress_city", value="", placeholder="Remscheid")
+  //-   fieldset
+  //-     label.required(for="password") Passwort
+  //-     input(type="text", name="password", placeholder="Passwort")
+  //-     br
+  //-     label.required(for="confirmation") Passwort bestätigen
+  //-     input(type="text", name="confirmation", placeholder="Passwort bestätigen")
+  //-   fieldset
+  //-     input(type="submit", value="Anmelden")
+  //-     input(type="hidden" name="_csrf", value="#{_csrf}")

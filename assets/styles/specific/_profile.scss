@@ -1,0 +1,80 @@
+.edit__profile__button {
+  @extend .small__button;
+  background: $turquoise;
+  vertical-align: super;
+  margin-left: $default-margin;
+  @include media($mobile) {
+    display: inline-block;
+    left: 20px;
+    position: relative;
+  }
+}
+
+.avatar__icon {
+  display: inline-block;
+  @include size(30px);
+  margin-right: $default-margin/2;
+  border-radius: 50%;
+}
+
+#profile__user {
+  position: relative;
+}
+
+#mail--profile {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  font-size: 18px;
+  line-height: 1;
+  vertical-align: bottom;
+  i {
+    font-size: 1.2em;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  @include media($tablet) {
+    display: none;
+  }
+}
+
+#user__inquiries--profile {
+  position: absolute;
+  bottom: 0px;
+  right: 50px;
+  font-size: 18px;
+  line-height: 1;
+  vertical-align: bottom;
+  i {
+    font-size: 1.2em;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  @include media($tablet) {
+    display: none;
+  }
+}
+
+#friendship__form {
+  display: inline;
+}
+
+.friendship__button {
+  @extend .small__button;
+  background: $turquoise;
+  vertical-align: super;
+  margin-left: $default-margin;
+  border: none;
+  cursor: pointer;
+  &--inquired {
+    background: $light-grey;
+    cursor: inherit;
+  }
+  &--delete {
+    background: $darkest-red;
+  }
+}

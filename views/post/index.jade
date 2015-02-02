@@ -1,0 +1,42 @@
+extends ../layout
+
+block body
+
+  h1 Blog
+  hr
+  ul.post__list
+    each post in posts
+      unless post.state == 'draft'
+        li.post__list--item
+          a(href="/blog/show/#{post.id}")= post.title
+          p= post.updatedAt.getDay() +'.'+ post.updatedAt.getDate() +'.'+ post.updatedAt.getFullYear()
+          p= post.brief
+          p
+            a.button(href="/blog/show/#{post.id}") Mehr lesen
+
+          if req.session.User && req.session.User.admin
+            br
+            br
+            a.button.button--admin(href="/blog/edit/#{post.id}") Edit
+            form(action="/blog/destroy/#{post.id}", medthod="POST")
+              input.button.button--delete.button--admin(type="submit", value="Delete", name="_method")
+              input(type="hidden", name="_csrf", value="#{_csrf}")
+
+  if req.session.User && req.session.User.admin
+    br
+    br
+    h1 Drafts
+    hr
+    ul.postlist
+      each post in posts
+        unless post.state == 'published'
+          li.post
+            a(href="/blog/show/#{post.id}")= post.title
+            p= post.updatedAt.getDay() +'.'+ post.updatedAt.getDate() +'.'+ post.updatedAt.getFullYear()
+            p= post.brief
+            br
+            br
+            a.button(href="/blog/edit/#{post.id}") Edit
+            form(action="/blog/destroy/#{post.id}", medthod="POST")
+              input.button.button--delete.button--admin(type="submit", value="Delete", name="_method")
+              input(type="hidden", name="_csrf", value="#{_csrf}")
