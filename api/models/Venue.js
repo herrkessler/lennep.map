@@ -30,7 +30,12 @@ module.exports = {
 
     location: {
       type: 'json',
-      defaultsTo: {lng: "", lat: ""}
+      defaultsTo: {lng: '', lat: ''}
+    },
+
+    gallery: {
+      type: 'array',
+      defaultsTo: ['/images/avatar.png']
     },
 
     owner: {

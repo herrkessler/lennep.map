@@ -1,7 +1,7 @@
 .card {
   @include span-columns(4);
   @include omega(3n);
-  background: white;
+  background: $tile-color;
   box-shadow: 0 0 5px rgba(0,0,0,0.6);
   margin-top: $default-margin;
   &:last-child {
@@ -29,6 +29,7 @@
   }
   img {
     @include total-center;
+    max-width: 100%;
   }
 }
 
@@ -50,13 +51,13 @@
 }
 
 .card-content {
-  color: black;
+  color: white;
   padding: $default-padding/2;
 }
 
 .card-rating {
-  float: left;
+  text-align: left;
 }
 .card-distance {
-  float: right;
+  text-align: right;
 }
