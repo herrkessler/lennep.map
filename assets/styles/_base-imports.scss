@@ -12,6 +12,7 @@
 // -----------------------------------------------------------------------
 
 @import "lib/reset";
+@import "lib/fontawesome/font-awesome";
 
 // -----------------------------------------------------------------------
 // Variables, Colors & Custom Mixins
@@ -27,4 +28,6 @@
 // -----------------------------------------------------------------------
 
 @import "specific/styles";
+@import "specific/layout";
 @import "specific/venue";
+@import "specific/card";
