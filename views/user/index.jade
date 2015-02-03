@@ -1,3 +1,12 @@
 extends ../layout
 
 block body
+
+  ul
+    each user in users
+      li
+        a(href="/user/#{user.id}")= user.userName
+        ul
+          each venue in user.venuesList
+            li
+              a(href="/venue/#{venue.id}")= venue.title
