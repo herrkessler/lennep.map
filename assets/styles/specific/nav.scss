@@ -1,0 +1,18 @@
+.menu-list-item {
+  position: relative;
+  &:not(.logo) {
+    float: right;
+    font-size: 14px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.fav-counter {
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  @include circle(20px);
+}

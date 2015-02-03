@@ -13,3 +13,6 @@ $darkest-red:       #9D4A42;
 $green:             darken(#27AE60, 15%);
 $turquoise:         darken(#16A085, 10%);
 $tile-color:        lighten($bg-color, 5%);
+
+$highlight:         $turquoise;
+$admin:             $red;
