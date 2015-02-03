@@ -1,0 +1,25 @@
+nav#menu
+  ul
+    li.menu-list-item.logo lennep.map
+    unless req.user != undefined
+      li.menu-list-item 
+        a(href="/register").button.highlight Signup
+      li.menu-list-item
+        a(href="/login").button Login
+    else
+      li.menu-list-item
+        a(href="/logout").button Logout
+    li.menu-list-item
+      a(href="#") Impressum
+    li.menu-list-item
+      a(href="#") Tour
+    li.menu-list-item
+      a(href="#") Favouriten
+        if req.session.authenticated && req.session.user.venues.length() > 0
+          span.fav-counter
+            = req.session.user.venues.length()
+        else
+          span.fav-counter
+
+    li.menu-list-item
+      a(href="") Map

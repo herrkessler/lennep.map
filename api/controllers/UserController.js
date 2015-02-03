@@ -26,13 +26,13 @@ module.exports = {
   // Show
 
   show: function(req, res) {
-    Users.find().where({'id': req.param('id')}).populate('venuesList').exec(function(err, user) {
+    User.find().where({'id': req.param('id')}).populate('venuesList').exec(function(err, user) {
       if (req.isSocket){
         res.json({user: user});
       }
       else {
         res.view({
-          user: user
+          user: user[0]
         });
       }
     });

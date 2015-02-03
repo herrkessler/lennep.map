@@ -1,0 +1,10 @@
+extends ../layout
+
+block body
+
+  if errors
+    each error in errors
+      p= error
+
+  h1 Index
+  hr

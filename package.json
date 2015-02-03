@@ -36,9 +36,14 @@
   "author": "kessler",
   "license": "",
   "devDependencies": {
+    "bcryptjs": "^2.1.0",
+    "connect-redis": "^2.2.0",
+    "express-session": "^1.10.2",
     "grunt-sass": "^0.17.0",
     "grunt-spider-script": "0.0.9",
     "node-neat": "^1.4.2",
-    "sails-mongo": "^0.10.5"
+    "passport": "^0.2.1",
+    "sails-mongo": "^0.10.5",
+    "validator": "^3.28.0"
   }
 }
