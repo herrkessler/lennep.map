@@ -28,8 +28,16 @@
     padding-top: 100%;
   }
   img {
-    @include total-center;
+    position: absolute;
+    top: 0;
+    left: 0;
     max-width: 100%;
+  }
+  .pill {
+    position: absolute;
+    top: $default-margin/2;
+    left: $default-margin/2;
+    z-index: 1;
   }
 }
 

@@ -13,7 +13,7 @@ nav#menu
           img.user-icon.top-nav(src="/images/user.jpg")
 
       #mobile-favourites
-        a(href="/venue")
+        a(href="/user/show/#{req.user[0].id}")
           i.fa.fa-heart
         span.mobile-fav-counter
           if req.user[0].venuesList.length > 0
@@ -37,7 +37,7 @@ nav#menu
       li.menu-list-item.tour
         a(href="#") Tour
       li.menu-list-item.favourites
-        a(href="#") Favouriten
+        a(href="/user/show/#{req.user[0].id}") Favouriten
           if req.isAuthenticated()
             span.fav-counter
               if req.user[0].venuesList.length > 0
@@ -52,7 +52,7 @@ nav#menu
         li.menu-list-item.tour
           a(href="#") Tour
         li.menu-list-item.favourites
-          a(href="#") Favouriten
+          a(href="/user/show/#{req.user[0].id}") Favouriten
         li.menu-list-item.map
           a(href="/venue") Map
         unless req.isAuthenticated()

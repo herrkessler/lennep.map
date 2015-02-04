@@ -21,7 +21,7 @@
       display: none;
     }
     &.logo {
-      z-index: 2;
+      z-index: 20;
     }
   }
 }
@@ -52,7 +52,7 @@
   @include size(20px);
   margin-top: 5px;
   position: relative;
-  z-index: 2;
+  z-index: 20;
   cursor: pointer;
   span {
     background: white;
@@ -63,7 +63,6 @@
     @include transition(all 0.2s ease-out);
   }
   &.active {
-    z-index: 2;
     span {
       &:first-child {
         @include transform(translateY(6px) rotate(-45deg));
@@ -93,7 +92,7 @@
   @include transition(opacity 0.2s ease-out);
   &.active {
     opacity: 1;
-    z-index: 1;
+    z-index: 10;
   }
 }
 
