@@ -1,12 +1,12 @@
 module.exports = function(req, res, next) {
 
-  // User is allowed, proceed to the next policy, 
-  // or if this is the last policy, the controller
-  if (req.isAuthenticated() && (req.user == venue.owner || req.user.admin === true)) {
-    return next();
-  }
+  Venue.find().where({'id': req.param('id')}).exec(function findOneCB(err,venue){
 
-  // User is not allowed
-  // (default res.forbidden() behavior can be overridden in `config/403.js`)
-  return res.forbidden('You are not permitted to perform this action.');
+    if (req.user[0].id == venue[0].owner) {
+      return next();
+    }
+
+    return res.forbidden('You are not permitted to perform this action.');
+  });
+
 };

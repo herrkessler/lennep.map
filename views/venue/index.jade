@@ -32,3 +32,8 @@ block body
                 .card-distance
                   i.fa.fa-map-marker
                   span 1.24km
+
+              if req.isAuthenticated()
+                if venue.owner == req.user[0].id
+                  hr
+                  a(href="/venue/edit/#{venue.id}") Edit

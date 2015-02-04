@@ -54,6 +54,35 @@ module.exports = {
         });
       }
     });
-  }
+  },
+
+  // Edit
+
+  edit : function (req, res, next) {
+    Venue.findOne( req.param('id'), function foundVenue( err, venue ) {
+      if (err) return next(err);
+      if (!venue) return next('Venue doesn\'t exist');
+      
+      res.view({
+        venue : venue
+      });
+    });
+  },
+
+  update : function (req, res, next) {
+    if (req.isSocket){
+      res.json({venue: venue});
+    }
+    else {
+
+      Venue.update( req.param('id'), req.params.all(), function venueUpdate( err ) {
+        if (err) {
+          return res.redirect('/venue/edit/' + req.param('id'));
+        }
+
+        res.redirect('/venue');
+      });
+    }
+  },
 };
 

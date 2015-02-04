@@ -39,7 +39,7 @@ module.exports.policies = {
   },
 
   venue: {
-    index: ['passport',true],
+    index: 'passport',
     show: 'passport',
     edit: ['passport', 'sessionAuth', 'isOwner'],
     update: ['passport', 'sessionAuth', 'isOwner'],
