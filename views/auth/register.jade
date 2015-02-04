@@ -2,13 +2,26 @@ extends ../layout
 
 block body
 
-  if errors
-    each error in errors
+  if flash
+    each error in flash.form
       p= error
 
-  form(role='form', action='/auth/local/register', method='POST')
-    input(type='text', name='username', placeholder='Username')  
-    input(type='text', name='email', placeholder='Email')
-    input(type='password', name='password', placeholder='Password')
-    input(type="hidden", name="_csrf", value="#{_csrf}")
-    button(type='submit') Sign up
+  #register-form
+    form.form(role='form', action='/auth/local/register', method='POST')
+      fieldset
+        label.required(for="username") Username
+        input(type='text', name='username', placeholder='username')
+      fieldset
+        label.required(for="firstName") Vorname
+        input(type='text', name='firstName', placeholder='vorname')
+        label.required(for="lastName") Nachname
+        input(type='text', name='lastName', placeholder='nachname')
+      fieldset
+        label.required(for="email") Email
+        input(type='text', name='email', placeholder='email')
+      fieldset
+        label.required(for="password") Passwort
+        input(type='password', name='password', placeholder='password')
+      fieldset
+        input(type="hidden", name="_csrf", value="#{_csrf}")
+        button.button.highlight(type='submit') Sign up

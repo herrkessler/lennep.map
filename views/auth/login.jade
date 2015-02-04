@@ -5,17 +5,20 @@ block body
   if errors
     each error in errors
       p= error
-
-  form(role='form', action='/auth/local', method='post')
-    input(type='text', name='identifier', placeholder='Username or Email')
-    input(type='password', name='password', placeholder='Password')
-    input(type="hidden", name="_csrf", value="#{_csrf}")
-    button(type='submit') Sign in
-
-
-  if providers 
-     h4 You can also use one of these...
-
-     each provider in providers
-      a(href="/auth/#{provider.slug}")= provider.name
-      br
+  #login-form
+    form.form(role='form', action='/auth/local', method='post')
+      fieldset
+        label.required(for="username") Username
+        input(type='text', name='identifier', placeholder='Username or Email')
+        label.required(for="password") Password
+        input(type='password', name='password', placeholder='Password')
+      fieldset
+        input(type="hidden", name="_csrf", value="#{_csrf}")
+        button.button(type='submit') Sign in
+    hr
+    if providers
+      #provider-login
+        h4 Or sign in with:
+        br
+        each provider in providers
+          a.button(href="/auth/#{provider.slug}", class="#{provider.slug}")= provider.name

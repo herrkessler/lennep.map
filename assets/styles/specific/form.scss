@@ -1,0 +1,18 @@
+.form {
+  fieldset {
+    margin-bottom: $default-margin;
+  }
+  label {
+    display: block;
+    margin-bottom: $default-margin/2;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    display: block;
+    width: 100%;
+    @include appearance(none);
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    margin-bottom: $default-margin/2;
+  }
+}

@@ -1,0 +1,11 @@
+#register-form, #login-form {
+  @include horizontal-center;
+  width: 300px;
+  margin-top: $default-margin*2;
+}
+
+#provider-login {
+  a {
+    margin-right: $default-margin/1.7;
+  }
+}
