@@ -359,8 +359,16 @@ passport.serializeUser(function (user, next) {
   next(null, user.id);
 });
 
-passport.deserializeUser(function (id, next) {
-  User.findOne(id, next);
+// passport.deserializeUser(function (id, next) {
+//   User.findOne(id, next);
+// });
+
+passport.deserializeUser(function (id, done) {
+    User.findById(id)
+    .populate('venuesList')
+    .exec(function (err, user) {
+        done(err, user);
+     });
 });
 
 module.exports = passport;
