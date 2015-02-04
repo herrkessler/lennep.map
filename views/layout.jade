@@ -5,7 +5,7 @@ html
     meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
     link(type='text/css', href='/styles/all.css', rel='stylesheet')
 
-    body(data-user=req.isAuthenticated() ? '#{req.session.User.id}' : 'sessionlessUser')
+    body(data-user=req.isAuthenticated() ? '#{req.user[0].id}' : 'sessionlessUser')
       
       .container
 
@@ -54,6 +54,3 @@ html
       script(src='/js/favourites.js')
       script(src='/js/modal.js')
       script(src='/js/nav.js')
-
-
-- console.log(req.user)

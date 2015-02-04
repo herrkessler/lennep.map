@@ -1,10 +1,11 @@
 $(document).ready(function(){
 
-  var sessionUserID = $('body').data('fake-user');
+  var sessionUserID = $('body').data('user');
   var modal = $('#modal');
   var modalAccountCancel = $('#cancel-account-button');
   var clickedCard = '';
   var favCounter = $('.fav-counter');
+  var mobileFavCounter = $('.mobile-fav-counter');
 
   if (sessionUserID != "sessionlessUser") {
 
@@ -12,6 +13,7 @@ $(document).ready(function(){
 
     if (hasFavourites === "") {
       favCounter.hide();
+      mobileFavCounter.hide();
     }
 
     $('.card-favourite').on('click', function(event){
@@ -24,9 +26,11 @@ $(document).ready(function(){
         io.socket.get('/user/'+sessionUserID+'/venuesList/remove/' + venueID, function (removeFav) {
           if (favCounter.text() === '1') {
             favCounter.hide().text("");
+            mobileFavCounter.hide().text("");
           } else {
             var initialCount = favCounter.text();
             favCounter.text(parseInt(initialCount)-1);
+            mobileFavCounter.text(parseInt(initialCount)-1);
           }
         });
 
@@ -37,11 +41,14 @@ $(document).ready(function(){
 
           if (favCounter.text() === "") {
             favCounter.show();
+            mobileFavCounter.show();
             favCounter.text(1);
+            mobileFavCounter.text(1);
 
           } else {
             var initialCount = favCounter.text();
             favCounter.text(parseInt(initialCount)+1);
+            mobileFavCounter.text(parseInt(initialCount)+1);
           }
         });
       }
@@ -49,9 +56,10 @@ $(document).ready(function(){
 
   } else {
 
-    if ($.cookie('favourites') === ""){
+    if ($.cookie('favourites') === undefined){
      $.cookie('favourites', '', { expires: 2 });
      favCounter.hide();
+     mobileFavCounter.hide();
     } else {
       var venueList = $.cookie('favourites').split(/,/);
       $('.card').each(function(){
@@ -60,6 +68,7 @@ $(document).ready(function(){
         }
       });
       favCounter.text(venueList.length-1);
+      mobileFavCounter.text(venueList.length-1);
     }
 
     $('.card-favourite').on('click', function(event){
@@ -77,8 +86,10 @@ $(document).ready(function(){
           $(this).closest('.card').removeClass('favourite');
           if (favCounter.text() == '1') {
             favCounter.hide();
+            mobileFavCounter.hide();
           } else {
             favCounter.text(venueList.length-1);
+            mobileFavCounter.text(venueList.length-1);
           }
         }
         else {
@@ -86,7 +97,9 @@ $(document).ready(function(){
           $.cookie('favourites', venueList);
           $(this).closest('.card').addClass('favourite');
           favCounter.show();
+          mobileFavCounter.show();
           favCounter.text(venueList.length-1);
+          mobileFavCounter.text(venueList.length-1);
         }
 
       } else {
@@ -108,7 +121,9 @@ $(document).ready(function(){
     clickedCard.closest('.card').addClass('favourite');
     modal.removeClass('active');
     favCounter.show();
+    mobileFavCounter.show();
     favCounter.text(venueList.length-1);
+    mobileFavCounter.text(venueList.length-1);
 
   });
 

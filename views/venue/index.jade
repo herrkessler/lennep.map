@@ -15,7 +15,7 @@ block body
       //-     li Suche
       ul.card-list
         each venue in venues
-          li.card(data-venue=venue.id, class=favourite ? 'favourite' : '')
+          li.card(data-venue=venue.id, class=venue.favourite ? 'favourite' : '')
             .card-avatar
               a(href="#")
                 img(src=venue.gallery[0])

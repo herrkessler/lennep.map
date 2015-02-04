@@ -15,9 +15,9 @@ nav#menu
       #mobile-favourites
         a(href="/venue")
           i.fa.fa-heart
-        //- if req.user.venues.length() > 0
-        //-   span.mobile-fav-counter
-        //-     = req.user.venues.length()
+        span.mobile-fav-counter
+          if req.user[0].venuesList.length > 0
+            = req.user[0].venuesList.length
 
     ul#main-navigation
       li.menu-list-item.logo
@@ -38,11 +38,12 @@ nav#menu
         a(href="#") Tour
       li.menu-list-item.favourites
         a(href="#") Favouriten
-          //- if req.isAuthenticated() && req.user.venueList.length() > 0
+          if req.isAuthenticated()
             span.fav-counter
-              = req.session.user.venues.length()
-          //- else
-          //-   span.fav-counter
+              if req.user[0].venuesList.length > 0
+                = req.user[0].venuesList.length
+          else
+            span.fav-counter
       li.menu-list-item.map
         a(href="/venues/") Map
 
