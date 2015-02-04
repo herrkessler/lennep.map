@@ -7,6 +7,11 @@
   height: 100vh;
 }
 
+.inner-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .row {
   @include row;
 }
@@ -16,12 +21,6 @@
   @include omega();
   background: #222;
   padding: $default-padding/2;
-  ul {
-    li {
-      display: inline-block;
-      margin-right: $default-margin;
-    }
-  }
 }
 
 #map {
@@ -57,5 +56,13 @@
   li {
     display: inline-block;
     margin-right: $default-margin;
+  }
+}
+
+main {
+  @include span-columns(12);
+  @include omega();
+  @include media($tablet) {
+    padding: $default-padding/2;
   }
 }

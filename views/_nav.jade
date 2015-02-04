@@ -1,25 +1,68 @@
 nav#menu
-  ul
-    li.menu-list-item.logo lennep.map
-    unless req.user != undefined
-      li.menu-list-item 
-        a(href="/register").button.highlight Signup
-      li.menu-list-item
-        a(href="/login").button Login
-    else
-      li.menu-list-item
-        a(href="/logout").button Logout
-    li.menu-list-item
-      a(href="#") Impressum
-    li.menu-list-item
-      a(href="#") Tour
-    li.menu-list-item
-      a(href="#") Favouriten
-        if req.session.authenticated && req.session.user.venues.length() > 0
-          span.fav-counter
-            = req.session.user.venues.length()
-        else
-          span.fav-counter
 
-    li.menu-list-item
-      a(href="") Map
+  .inner-container
+
+    #mobile-icon
+      span
+      span
+      span
+
+    if req.user != undefined
+      #mobile-user-icon
+        a(href="/user/show/#{req.user.id}")
+          img.user-icon.top-nav(src="/images/user.jpg")
+
+      #mobile-favourites
+        a(href="/venue")
+          i.fa.fa-heart
+        //- if req.user.venues.length() > 0
+        //-   span.mobile-fav-counter
+        //-     = req.user.venues.length()
+
+    ul#main-navigation
+      li.menu-list-item.logo
+        a(href="/") lennep.map
+      unless req.user != undefined
+        li.menu-list-item.signup
+          a(href="/register").button.highlight Signup
+        li.menu-list-item.login
+          a(href="/login").button Login
+      else
+        li.menu-list-item.logout
+          a(href="/logout").button.highlight Logout
+        li.menu-list-item.user
+          a(href="/user/show/#{req.user.id}")
+            img.user-icon(src="/images/user.jpg")
+          a.button(href="/user/show/#{req.user.id}")= req.user.username 
+      li.menu-list-item.tour
+        a(href="#") Tour
+      li.menu-list-item.favourites
+        a(href="#") Favouriten
+          //- if req.isAuthenticated() && req.user.venueList.length() > 0
+            span.fav-counter
+              = req.session.user.venues.length()
+          //- else
+          //-   span.fav-counter
+      li.menu-list-item.map
+        a(href="/venues/") Map
+
+    #mobile-navigation-wrapper
+      ul#mobile-navigation
+        li.menu-list-item.tour
+          a(href="#") Tour
+        li.menu-list-item.favourites
+          a(href="#") Favouriten
+        li.menu-list-item.map
+          a(href="/venue") Map
+        unless req.isAuthenticated()
+          li.menu-list-item.login
+            a(href="/login").button Login
+          li.menu-list-item.signup
+            a(href="/register").button.highlight Signup
+        else
+          li.menu-list-item.user
+            a(href="/user/show/#{req.user.id}")
+              img.user-icon(src="/images/user.jpg")
+            a.button(href="/user/show/#{req.user.id}")= req.user.username 
+          li.menu-list-item.logout
+            a(href="/logout").button.highlight Logout
