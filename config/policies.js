@@ -26,10 +26,35 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': ['passport', 'sessionAuth', 'flash'],
+  '*': 'flash',
 
   'auth': {
     '*': ['passport']
+  },
+  user: {
+    show: ['passport', 'sessionAuth', 'isSelf'],
+    edit: ['passport', 'sessionAuth', 'isSelf'],
+    index: ['passport', 'sessionAuth', 'isAdmin'],
+    update: ['passport', 'sessionAuth', 'isSelf'],
+  },
+
+  venue: {
+    index: 'passport',
+    show: 'passport',
+    edit: ['passport', 'sessionAuth', 'isOwner'],
+    update: ['passport', 'sessionAuth', 'isOwner'],
+  },
+
+  home: {
+    index: ['passport','indexPage']
+  },
+
+  post: {
+    show: 'passport',
+    index: 'passport',
+    edit: ['passport', 'sessionAuth', 'isAdmin'],
+    create: ['passport', 'sessionAuth', 'isAdmin'],
+    new: ['passport', 'sessionAuth', 'isAdmin'],
   }
 
   /***************************************************************************
