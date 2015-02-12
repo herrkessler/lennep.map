@@ -1,3 +1,14 @@
 extends ../layout
 
 block body
+
+  #venue-show-container
+
+    h1= venue.title
+    hr
+    br
+    #venue-gallery
+      ul
+        each image in venue.gallery
+          li
+            img(src= image)

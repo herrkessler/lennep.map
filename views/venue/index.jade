@@ -2,28 +2,37 @@ extends ../layout
 
 block body
 
-  main#content
+  #venue-container
 
+    #venue-filter-bar
+      #venue-filter-bar-menu
+        a.button.show-filter-link.icon(href="#")
+          i.fa.fa-arrows-v 
+          span Filter
+        a.button.icon.show-list-link(href="#")
+          i.fa.fa-list.fa-fw
+      ul.category-list
+        each category in categories
+          li.category-list-item
+            a.button(href="#", data-category="#category.id")=category.title
     #map
       #map-canvas
 
-    section#list
-      //- nav#list-search
-      //-   ul
-      //-     li Suche
-      //-     li Suche
-      //-     li Suche
+    #list
       ul.card-list
         each venue in venues
           li.card(data-venue=venue.id, class=venue.favourite ? 'favourite' : '')
             .card-avatar
-              a(href="#")
+              if req.isAuthenticated()
+                if venue.owner == req.user[0].id
+                  a.pill.edit(href="/venue/edit/#{venue.id}") Edit
+              a(href="/venue/show/#{venue.id}")
                 img(src=venue.gallery[0])
               .card-favourite
                 i.fa.fa-heart
             .card-content
               h4
-                a(href="#")= venue.title
+                a(href="/venue/show/#{venue.id}")= venue.title
               .card-facts
                 .card-rating
                   i.fa.fa-star
@@ -32,8 +41,3 @@ block body
                 .card-distance
                   i.fa.fa-map-marker
                   span 1.24km
-
-              if req.isAuthenticated()
-                if venue.owner == req.user[0].id
-                  hr
-                  a(href="/venue/edit/#{venue.id}") Edit

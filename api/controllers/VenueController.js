@@ -15,28 +15,29 @@ module.exports = {
         res.json({venues: venues});
       }
       else {
-        var sessionUser = req.user;
-        var list = [];
-
-        if (sessionUser !== undefined) {
-
-          for (var x = 0, leng = sessionUser[0].venuesList.length; x < leng; x++) {
-            list.push(sessionUser[0].venuesList[x].id);
-          }
-
-          for (var i = 0, len = venues.length; i < len; i++) {
-            if (list.indexOf(venues[i].id) != -1) {
-              venues[i]['favourite'] = true;
+        Category.find().exec(function(err, categories){
+          var sessionUser = req.user;
+          var list = [];
+          if (sessionUser !== undefined) {
+            for (var x = 0, leng = sessionUser[0].venuesList.length; x < leng; x++) {
+              list.push(sessionUser[0].venuesList[x].id);
             }
+            for (var i = 0, len = venues.length; i < len; i++) {
+              if (list.indexOf(venues[i].id) != -1) {
+                venues[i]['favourite'] = true;
+              }
+            }
+            res.view({
+              venues: venues,
+              categories: categories
+            });
+          } else {
+            res.view({
+              venues: venues,
+              categories: categories
+            });
           }
-          res.view({
-            venues: venues
-          });
-        } else {
-          res.view({
-            venues: venues
-          });
-        }
+        });
       }
     });
   },
@@ -46,11 +47,11 @@ module.exports = {
   show: function(req, res) {
     Venue.find().where({'id': req.param('id')}).populate('venuesListedBy').populate('venuesCategories').exec(function(err, venue) {
       if (req.isSocket){
-        res.json({venue: venue});
+        res.json({venue: venue[0]});
       }
       else {
         res.view({
-          venue: venue
+          venue: venue[0]
         });
       }
     });

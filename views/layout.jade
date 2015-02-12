@@ -5,7 +5,7 @@ html
     meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
     link(type='text/css', href='/styles/all.css', rel='stylesheet')
 
-    body(data-user=req.isAuthenticated() ? '#{req.user[0].id}' : 'sessionlessUser')
+    body(data-user=req.isAuthenticated() ? '#{req.user[0].id}' : 'sessionlessUser', class="#{req.options.controller}")
       
       .container
 
@@ -17,25 +17,16 @@ html
               li= message.message
 
         main
-          .inner-container
-            block body
+          block body
 
       #modal
         #modal-wrapper
-          a#modal-close-button(href="#")
-            i.fa.fa-times
           #modal-inner
             #modal-login
-              h2 Einloggen um Favouriten zu speichern
+              p Einloggen um Favouriten zu speichern
               hr
-              form#modal-form.form
-                input(type="email", placehoder="email", value="")
-                br
-                input(type="password", placehoder="passwort")
-                br
-                input.button.full(type="submit", value="Einloggen")
-                input(type="hidden", value="")
-              hr
+              a.button.full(href="/login") Einloggen
+              br
               p Noch kein Konto?
               br
               a.button.full.highlight(href="#") Neues Konto anlegen
@@ -54,6 +45,5 @@ html
       script(src='/js/favourites.js')
       script(src='/js/modal.js')
       script(src='/js/nav.js')
-
-      //- - console.log(req.user)
-      //- - console.log(req.param('id'));
+      script(src='/js/venue.js')
+      script(src='/js/touch.js')

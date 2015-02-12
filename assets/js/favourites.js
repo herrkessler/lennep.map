@@ -6,6 +6,7 @@ $(document).ready(function(){
   var clickedCard = '';
   var favCounter = $('.fav-counter');
   var mobileFavCounter = $('.mobile-fav-counter');
+  var favouritesLink = $('.favourites-link-js');
 
   if (sessionUserID != "sessionlessUser") {
 
@@ -108,6 +109,14 @@ $(document).ready(function(){
       }
 
       
+    });
+    
+    favouritesLink.on('click', function(event) {
+      event.preventDefault();
+      var favs = $.cookie('favourites');
+      var host = window.location.host;
+      var newUrl = 'http://'+host+'/favourites/?favs='+favs;
+      window.location.assign(newUrl);
     });
   }
 

@@ -1,0 +1,80 @@
+#venue-container {
+  width: 100%;
+  @include calc(height, "100vh - 90px");
+  @include media($mobile) {
+    float: left;
+    display: block;
+    width: 200%;
+    margin-right: 0;
+    &.active {
+      #list {
+        @include transform(translateX(-100%));
+      }
+      #map {
+        @include transform(translateX(-100%));
+      }
+    }
+  }
+}
+
+#list {
+  width: 46%;
+  margin: 0 2%;
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  @include media($mobile) {
+    padding: 0 $default-margin/2;
+  }
+}
+
+.card-list {
+  @include size(100%);
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+#venue-filter-bar {
+  position: fixed;
+  width: 100%;
+  background: #222222;
+  color: white;
+  bottom: 0;
+  left: 0;
+  padding: $default-margin/2;
+  z-index: 1;
+  max-height: 46px;
+  @include transition(max-height 0.3s ease-out);
+  &.active {
+    max-height: 300px;
+  } 
+}
+
+#venue-filter-bar-menu {
+  @include span-columns(12);
+  @include omega();
+  margin-bottom: $default-margin;
+}
+
+.show-filter-link {
+  float: left;
+}
+.show-list-link {
+  float: right;
+}
+
+.category-list {
+  @include span-columns(12);
+  @include omega();
+}
+
+.category-list-item {
+  display: inline-block;
+  margin: 0 $default-margin $default-margin 0;
+}
+
+// Venue#show
+  
+#venue-show-container {
+  padding: $default-padding/2;
+}

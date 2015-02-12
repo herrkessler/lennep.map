@@ -1,0 +1,49 @@
+extends ../layout
+
+block body
+
+  .inner-container
+
+    if errors
+      each error in errors
+        p= error
+
+    h1 Favouriten
+    hr
+
+    if req.isAuthenticated()
+      ul.card-list
+        each venue in user.venuesList
+          li.card(data-venue=venue.id)
+            .card-avatar
+              if req.isAuthenticated()
+                if venue.owner == req.user[0].id
+                  a.pill.edit(href="/venue/edit/#{venue.id}") Edit
+              a(href="/venue/show/#{venue.id}")
+                img(src=venue.gallery[0])
+            .card-content
+              h4
+                a(href="/venue/show/#{venue.id}")= venue.title
+              .card-facts
+                .card-rating
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+    else
+      ul.card-list
+        each venue in venues
+          li.card(data-venue=venue.id)
+            .card-avatar
+              if req.isAuthenticated()
+                if venue.owner == req.user[0].id
+                  a.pill.edit(href="/venue/edit/#{venue.id}") Edit
+              a(href="/venue/show/#{venue.id}")
+                img(src=venue.gallery[0])
+            .card-content
+              h4
+                a(href="/venue/show/#{venue.id}")= venue.title
+              .card-facts
+                .card-rating
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star

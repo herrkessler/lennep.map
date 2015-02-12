@@ -15,7 +15,6 @@ module.exports = {
         res.json({users: users});
       }
       else {
-        // var sessionUser = req.session.User.id;
         res.view({
           users: users
         });

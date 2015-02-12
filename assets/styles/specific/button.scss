@@ -19,6 +19,12 @@ $map: (facebook: #3B5998, twitter: #55ACEE, google: #D73D32, github: silver);
     color: grey;
     border-color: grey;
   }
+  .touch & {
+    &:hover {
+      color: inherit!important;
+      border-color: inherit!important;
+    }
+  }
 }
 
 .button {

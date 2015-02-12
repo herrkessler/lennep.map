@@ -5,7 +5,7 @@
   box-shadow: 0 0 5px rgba(0,0,0,0.6);
   margin-top: $default-margin;
   &:last-child {
-    margin-bottom: $default-margin;
+    margin-bottom: $default-margin*4;
   }
   @include media($tablet) {
     @include span-columns(6);
@@ -56,11 +56,19 @@
   &:hover {
     @include transform(scale(1.1));
   }
+  .touch & {
+    &:hover {
+      @include transform(scale(1));
+    }
+  }
 }
 
 .card-content {
   color: white;
   padding: $default-padding/2;
+  h4 {
+    @include ellipsis;
+  }
 }
 
 .card-rating {

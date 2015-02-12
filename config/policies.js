@@ -49,6 +49,10 @@ module.exports.policies = {
     index: ['passport','indexPage']
   },
 
+  favourites: {
+    index: ['passport']
+  },
+
   post: {
     show: 'passport',
     index: 'passport',
