@@ -21,7 +21,7 @@ module.exports.sockets = {
   * automatically.                                                           *
   *                                                                          *
   ***************************************************************************/
-  // onConnect: function(session, socket) {
+  // onDisconnect: function(session, socket) {
 
   //   // By default, do nothing.
 

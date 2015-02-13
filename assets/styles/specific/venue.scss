@@ -61,6 +61,10 @@
 }
 .show-list-link {
   float: right;
+  display: none;
+  @include media($mobile) {
+    display: block;
+  }
 }
 
 .category-list {
