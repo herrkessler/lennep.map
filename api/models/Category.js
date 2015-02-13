@@ -16,6 +16,10 @@ module.exports = {
       required: true,
     },
 
+    slack: {
+      type: 'string'
+    },
+
     icon: {
       type: 'string',
       defaultsTo: '/images/icon.png'
@@ -28,6 +32,11 @@ module.exports = {
       via: 'venuesCategories'
     }
 
+  },
+
+  beforeCreate: function(values, next) {
+    values.slack = values.title.toLowerCase();
+    next();
   }
 };
 

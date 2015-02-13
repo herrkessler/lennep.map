@@ -24,3 +24,32 @@
 .point-description {
   color: black;
 }
+
+.category-list-item {
+  a {
+    &.active {
+      color: $highlight;
+      border-color: $highlight;
+    }
+  }
+}
+
+.category-reset-js {
+  opacity: 0;
+  @include transition(opacity 0.2s);
+  &.active {
+    opacity: 1;
+  }
+}
+
+$categories: "restaurant", "bar-kneipe", "museum", "geschäft", "bäckerei";
+
+.card-list{
+  @each $cat in $categories {
+    &[data-category=#{$cat}] {
+      .card:not([data-category~=#{$cat}]) {
+        display: none;
+      }
+    }    
+  }
+}

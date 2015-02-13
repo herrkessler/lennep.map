@@ -42,6 +42,10 @@ module.exports = {
       defaultsTo: false
     },
 
+    categories: {
+      type: 'array'
+    },
+
     // Associations
 
     venuesListedBy:{

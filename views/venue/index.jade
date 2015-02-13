@@ -9,6 +9,9 @@ block body
         a.button.show-filter-link.icon(href="#")
           i.fa.fa-arrows-v 
           span Filter
+        a.button.category-reset-js.icon(href="#")
+          i.fa.fa-times
+          span Reset
         a.button#whereami(href="")
           i.fa.fa-location-arrow.fa-fw
         a.button.icon.show-list-link(href="#")
@@ -16,14 +19,14 @@ block body
       ul.category-list
         each category in categories
           li.category-list-item
-            a.button(href="#", data-category="#category.id")=category.title
+            a.button.category-filter-js(href="#", data-category=category.slack)=category.title
     #map
       #map-canvas
 
     #list
       ul.card-list
         each venue in venues
-          li.card(data-venue=venue.id, class=venue.favourite ? 'favourite' : '')
+          li.card(data-venue=venue.id, class=venue.favourite ? 'favourite' : '', data-category=venue.categories)
             .card-avatar
               if req.isAuthenticated()
                 if venue.owner == req.user[0].id

@@ -37,7 +37,7 @@ var styles=[{featureType:"water",stylers:[{visibility:"on"},{color:"#b5cbe4"}]},
           ]},
           "properties": {
             "title": venue.title,
-            "category": venue.venueCategories,
+            "category": venue.categories,
             "id": venue.id
         }
       });
@@ -107,7 +107,34 @@ var styles=[{featureType:"water",stylers:[{visibility:"on"},{color:"#b5cbe4"}]},
     getLocation();
   };
 
+  // Filter Map
+  // ----------------------
+
+
+
+  var filterbutton = $('.category-filter-js'),
+      resetFilter = $('.category-reset-js');
+
+  filterbutton.on('click', function(event) {
+    event.preventDefault();
+    var category = $(this).data('category');
+    $(this).addClass('active');
+    $(this).parent().siblings().find('a').removeClass('active');
+    $('.card-list').attr('data-category', category);
+    resetFilter.addClass('active');
+  });
+
+  resetFilter.on('click', function(event){
+    event.preventDefault();
+    filterbutton.removeClass('active');
+    $('.card-list').attr('data-category', "");
+    resetFilter.removeClass('active');
+  });
+
 }
+
+// Functions
+// ------------------------
 
 function loadScript() {
   var script = document.createElement("script");
