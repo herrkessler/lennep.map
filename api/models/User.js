@@ -1,3 +1,5 @@
+var gravatar = require('gravatar');
+
 var User = {
   // Enforce model schema in the case of schemaless databases
   schema: true,
@@ -25,6 +27,10 @@ var User = {
       defaultsTo: false
     },
 
+    gravatarURL: {
+      type: 'string'
+    },
+
     // Associations
 
     venuesList: {
@@ -37,6 +43,11 @@ var User = {
       model: 'post'
     }
 
+  },
+
+  beforeCreate: function(values, next) {
+    values.gravatarURL = gravatar.url(values.email, {s: '100', r: 'x', d: 'retro'}, false);
+    next();
   }
 };
 

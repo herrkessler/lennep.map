@@ -5,7 +5,7 @@ block body
   .inner-container(class="#{user.id}")
 
     h2 
-      img.user-icon(src="/images/user.jpg")
+      img.user-icon(src="#{req.user[0].gravatarURL}")
       span= user.username
     a(href="/user/edit/#{req.user[0].id}") Nutzerdaten bearbeiten
     hr
