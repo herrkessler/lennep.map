@@ -2,7 +2,7 @@ extends ../layout
 
 block body
 
-  .inner-container
+  .inner-container.favourites
 
     if errors
       each error in errors
@@ -14,7 +14,7 @@ block body
     if req.isAuthenticated()
       ul.card-list
         each venue in user.venuesList
-          li.card(data-venue=venue.id)
+          li.favourites-card(data-venue=venue.id)
             .card-avatar
               if req.isAuthenticated()
                 if venue.owner == req.user[0].id
@@ -32,7 +32,7 @@ block body
     else
       ul.card-list
         each venue in venues
-          li.card(data-venue=venue.id)
+          li.favourites-card(data-venue=venue.id)
             .card-avatar
               if req.isAuthenticated()
                 if venue.owner == req.user[0].id

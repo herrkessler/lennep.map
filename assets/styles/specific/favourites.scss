@@ -1,19 +1,6 @@
-.user-container {
-  padding: $default-padding/2;
-}
-
-.user-favourites-info, .user-info {
-  @include span-columns(6);
-  @include omega(2n);
-  @include media($tablet) {
-    @include span-columns(12);
-    @include omega;
-  }
-}
-
-.user-favourites-card {
-  @include span-columns(4);
-  @include omega(3n);
+.favourites-card{
+  @include span-columns(2);
+  @include omega(6n);
   background: $tile-color;
   box-shadow: 0 0 5px rgba(0,0,0,0.6);
   margin-top: $default-margin;
@@ -22,7 +9,7 @@
   }
   @include media($tablet) {
     @include span-columns(3);
-    @include omega-reset(3n);
+    @include omega-reset(6n);
     @include omega(4n);
   }
   @include media($mobile) {
