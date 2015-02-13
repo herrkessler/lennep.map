@@ -36,6 +36,8 @@ nav#menu
           a.button(href="/user/show/#{req.user[0].id}")= req.user[0].username 
       li.menu-list-item.tour
         a(href="#") Tour
+      li.menu-list-item.blog
+        a(href="#") Blog
       li.menu-list-item.favourites
         if req.user != undefined
           //- a(href="/user/show/#{req.user[0].id}") Favouriten
@@ -59,6 +61,8 @@ nav#menu
 
     #mobile-navigation-wrapper
       ul#mobile-navigation
+        li.menu-list-item.blog
+          a(href="#") Blog
         li.menu-list-item.tour
           a(href="#") Tour
         li.menu-list-item.favourites

@@ -1,6 +1,6 @@
 #venue-container {
   width: 100%;
-  @include calc(height, "100vh - 90px");
+  @include calc(height, "100vh - 46px");
   @include media($mobile) {
     float: left;
     display: block;
@@ -36,7 +36,7 @@
 
 #venue-filter-bar {
   position: fixed;
-  width: 100%;
+  width: 50%;
   background: #222222;
   color: white;
   bottom: 0;
@@ -45,9 +45,20 @@
   z-index: 1;
   max-height: 46px;
   @include transition(max-height 0.3s ease-out);
+  @include media($mobile) {
+    width: 100%;
+  }
   &.active {
     max-height: 300px;
   } 
+}
+
+#whereami {
+  float: right;
+  @include media($mobile) {
+    @include horizontal-center;
+    float: none;
+  }
 }
 
 #venue-filter-bar-menu {

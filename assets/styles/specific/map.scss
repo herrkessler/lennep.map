@@ -1,19 +1,19 @@
 #map, #list {
   float: left;
   overflow-x: hidden;
+  height: 100%;
   @include media($mobile) {
     display: block;
     width: 50%!important;
     margin: 0!important;
     overflow-x: hidden;
-    height: 100%;
     @include transition(transform 0.3s ease-out);
   }
 }
 
 #map {
   width: 50%;
-  height: 100%;
+  @include calc(height, "100vh - 90px");
 }
 
 #map-canvas {

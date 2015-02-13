@@ -1,70 +1,6 @@
 function initialize() {
 
-  var styles = [{
-    "featureType": "water",
-    "stylers": [{
-      "visibility": "on"
-    }, {
-      "color": "#b5cbe4"
-    }]
-  }, {
-    "featureType": "landscape",
-    "stylers": [{
-      "color": "#efefef"
-    }]
-  }, {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [{
-      "color": "#83a5b0"
-    }]
-  }, {
-    "featureType": "road.arterial",
-    "elementType": "geometry",
-    "stylers": [{
-      "color": "#bdcdd3"
-    }]
-  }, {
-    "featureType": "road.local",
-    "elementType": "geometry",
-    "stylers": [{
-      "color": "#ffffff"
-    }]
-  }, {
-    "featureType": "poi.park",
-    "elementType": "geometry",
-    "stylers": [{
-      "color": "#e3eed3"
-    }]
-  }, {
-    "featureType": "administrative",
-    "stylers": [{
-      "visibility": "on"
-    }, {
-      "lightness": 33
-    }]
-  }, {
-    "featureType": "road"
-  }, {
-    "featureType": "poi.park",
-    "elementType": "labels",
-    "stylers": [{
-      "visibility": "on"
-    }, {
-      "lightness": 20
-    }]
-  }, {}, {
-    "featureType": "road",
-    "stylers": [{
-      "lightness": 20
-    }]
-  }, {
-    "featureType": "poi",
-    "elementType": "labels",
-    "stylers": [{
-      "visibility": "off"
-    }]
-}];
+var styles=[{featureType:"water",stylers:[{visibility:"on"},{color:"#b5cbe4"}]},{featureType:"landscape",stylers:[{color:"#efefef"}]},{featureType:"road.highway",elementType:"geometry",stylers:[{color:"#83a5b0"}]},{featureType:"road.arterial",elementType:"geometry",stylers:[{color:"#bdcdd3"}]},{featureType:"road.local",elementType:"geometry",stylers:[{color:"#ffffff"}]},{featureType:"poi.park",elementType:"geometry",stylers:[{color:"#e3eed3"}]},{featureType:"administrative",stylers:[{visibility:"on"},{lightness:33}]},{featureType:"road"},{featureType:"poi.park",elementType:"labels",stylers:[{visibility:"on"},{lightness:20}]},{},{featureType:"road",stylers:[{lightness:20}]},{featureType:"poi",elementType:"labels",stylers:[{visibility:"off"}]}];
 
   var styledMap = new google.maps.StyledMapType(styles,
     {name: "Styled Map"});
@@ -124,6 +60,52 @@ function initialize() {
     });
 
   });
+
+  // Get Position
+  // -------------------------------
+
+  var err = document.getElementById("map-error"),
+      button = document.getElementById('whereami');
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      err.innerHTML = "Your browser doesn't support geolocation..";
+    }
+  }
+
+  function showPosition(position) {
+    var myLatlng = {lat: position.coords.latitude , lng: position.coords.longitude};
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title:"Hier bin Ii!"
+    });
+    marker.setIcon('http://maps.google.com/mapfiles/marker_yellow.png');
+  }
+
+  function showError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        err.innerHTML = "Request for Geolocation denied by the user.";
+        break;
+      case error.POSITION_UNAVAILABLE:
+        err.innerHTML = "Unavailable location information.";
+        break;
+      case error.TIMEOUT:
+        err.innerHTML = "Location request timed out.";
+        break;
+      case error.UNKNOWN_ERROR:
+        err.innerHTML = "UNKNOWN_ERROR.";
+        break;
+    }
+  }
+
+  button.onclick=function(event){
+    event.preventDefault();
+    getLocation();
+  };
 
 }
 
